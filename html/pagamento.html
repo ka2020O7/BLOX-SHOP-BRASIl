@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagamento - Blox Shop Brasil</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pagamento.css">
+</head>
+<body>
+  <header>
+    <div class="banner">
+      <img src="../css/assets/banner-temp.jpg" alt="Banner Blox Shop Brasil">
+      <div class="logo">BLOX SHOP BRASIL</div>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Início</a></li>
+          <li><a href="atendimento.html">Atendimento online</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="politica.html">Política de compra</a></li>
+          <li><a href="meus-pedidos.html">Meus pedidos</a></li>
+        </ul>
+      </nav>
+      <button class="btn-online">ESTAMOS ONLINE</button>
+    </div>
+  </header>
+
+  <main class="pagamento-container">
+    <!-- Formulário de Login -->
+    <div id="login-form" class="auth-form">
+      <h2>Já tem uma conta?</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="login-email">Email:</label>
+          <input type="email" id="login-email" required>
+        </div>
+        <div class="form-group">
+          <label for="login-senha">Senha:</label>
+          <input type="password" id="login-senha" required>
+        </div>
+        <button type="submit" class="btn-primary">Entrar</button>
+      </form>
+      <p class="auth-switch">Não tem uma conta? <a href="#" id="show-register">Criar conta</a></p>
+    </div>
+
+    <!-- Formulário de Registro -->
+    <div id="register-form" class="auth-form" style="display: none;">
+      <h2>Criar nova conta</h2>
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="register-nome">Nome:</label>
+          <input type="text" id="register-nome" required>
+        </div>
+        <div class="form-group">
+          <label for="register-email">Email:</label>
+          <input type="email" id="register-email" required>
+        </div>
+        <div class="form-group">
+          <label for="register-senha">Senha:</label>
+          <input type="password" id="register-senha" required>
+        </div>
+        <div class="form-group">
+          <label for="register-confirmar-senha">Confirmar Senha:</label>
+          <input type="password" id="register-confirmar-senha" required>
+        </div>
+        <button type="submit" class="btn-primary">Criar Conta</button>
+      </form>
+      <p class="auth-switch">Já tem uma conta? <a href="#" id="show-login">Fazer login</a></p>
+    </div>
+
+    <!-- Formulário de Pagamento (aparece após autenticação) -->
+    <div id="payment-form" class="payment-form" style="display: none;">
+      <h2>Finalizar Compra</h2>
+      <div class="produto-resumo">
+        <h3>Resumo do Pedido</h3>
+        <div id="produto-info"></div>
+        <div class="total">
+          <span>Total:</span>
+          <span id="total-valor"></span>
+        </div>
+      </div>
+      <form id="paymentForm">
+        <div class="form-group">
+          <label>Forma de Pagamento:</label>
+          <div class="payment-methods">
+            <label class="payment-method">
+              <input type="radio" name="payment" value="pix" checked>
+              <span>PIX</span>
+            </label>
+            <label class="payment-method">
+              <input type="radio" name="payment" value="credit">
+              <span>Cartão de Crédito</span>
+            </label>
+            <label class="payment-method">
+              <input type="radio" name="payment" value="boleto">
+              <span>Boleto</span>
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary">Finalizar Compra</button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    // Função para alternar entre login e registro
+    document.getElementById('show-register').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('register-form').style.display = 'block';
+    });
+
+    document.getElementById('show-login').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('register-form').style.display = 'none';
+      document.getElementById('login-form').style.display = 'block';
+    });
+
+    // Função para carregar informações do produto
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const produtoId = urlParams.get('id');
+      const preco = urlParams.get('preco');
+      const nome = urlParams.get('nome');
+
+      if (produtoId && preco && nome) {
+        document.getElementById('produto-info').innerHTML = `
+          <p>${nome}</p>
+          <p>Preço: R$ ${preco}</p>
+        `;
+        document.getElementById('total-valor').textContent = `R$ ${preco}`;
+      }
+    };
+
+    // Manipulador do formulário de login
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const senha = document.getElementById('login-senha').value;
+
+      try {
+        const response = await fetch('http://localhost:3000/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, senha })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          localStorage.setItem('token', data.token);
+          showPaymentForm();
+        } else {
+          alert(data.erro);
+        }
+      } catch (erro) {
+        alert('Erro ao fazer login');
+      }
+    });
+
+    // Manipulador do formulário de registro
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nome = document.getElementById('register-nome').value;
+      const email = document.getElementById('register-email').value;
+      const senha = document.getElementById('register-senha').value;
+      const confirmarSenha = document.getElementById('register-confirmar-senha').value;
+
+      if (senha !== confirmarSenha) {
+        alert('As senhas não coincidem');
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:3000/api/cadastro', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ nome, email, senha })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          localStorage.setItem('token', data.token);
+          showPaymentForm();
+        } else {
+          alert(data.erro);
+        }
+      } catch (erro) {
+        alert('Erro ao criar conta');
+      }
+    });
+
+    // Função para mostrar o formulário de pagamento
+    function showPaymentForm() {
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('register-form').style.display = 'none';
+      document.getElementById('payment-form').style.display = 'block';
+    }
+
+    // Manipulador do formulário de pagamento
+    document.getElementById('paymentForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formaPagamento = document.querySelector('input[name="payment"]:checked').value;
+      
+      // Aqui você implementaria a lógica de pagamento
+      alert('Pedido realizado com sucesso!');
+      window.location.href = 'meus-pedidos.html';
+    });
+  </script>
+</body>
+</html> 

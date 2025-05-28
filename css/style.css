@@ -491,4 +491,39 @@ header nav ul li a:hover {
   color: #aaa;
   font-size: 0.98rem;
   text-decoration: underline;
+}
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+.btn-buy {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #00ff66;
+  color: #18191c;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.btn-buy:hover {
+  background-color: #00cc55;
+  transform: translateY(-2px);
+}
+.btn-details {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #23242a;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.btn-details:hover {
+  background-color: #2a2b32;
+  transform: translateY(-2px);
 } 

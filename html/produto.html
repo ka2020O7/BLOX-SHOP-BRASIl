@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Produto - Blox Brasil</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/produto.css">
+</head>
+<body>
+  <header>
+    <div class="banner">
+      <img src="../css/assets/banner-temp.jpg" alt="Banner Blox Brasil">
+      <div class="logo">BLOX BRASIL</div>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Início</a></li>
+          <li><a href="atendimento.html">Atendimento online</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="politica.html">Política de compra</a></li>
+          <li><a href="meus-pedidos.html">Meus pedidos</a></li>
+        </ul>
+      </nav>
+      <button class="btn-online">ESTAMOS ONLINE</button>
+    </div>
+  </header>
+
+  <main class="produto-container">
+    <div class="produto-detalhes">
+      <div class="produto-imagem">
+        <img src="../css/assets/produto1.jpg" alt="Produto" id="produto-img">
+      </div>
+      <div class="produto-info-detalhada">
+        <h1 id="produto-titulo">LEVEL 2650 + FRUTA GRAVITY</h1>
+        <div class="precos">
+          <span class="preco-atual" id="preco-atual">R$ 19,90</span>
+          <span class="preco-antigo" id="preco-antigo">R$ 21,99</span>
+        </div>
+        <div class="produto-descricao">
+          <h2>Descrição do Produto</h2>
+          <p id="produto-descricao-texto">Conta de Blox Fruit: Level Aleatório + Fruta Gravity no Inventário</p>
+          <ul class="produto-caracteristicas">
+            <li>✅ Level garantido</li>
+            <li>✅ Fruta no inventário</li>
+            <li>✅ Entrega automática</li>
+            <li>✅ Suporte 24/7</li>
+          </ul>
+        </div>
+        <div class="produto-acoes">
+          <button class="btn-comprar-grande">COMPRAR AGORA</button>
+          <div class="pagamento-info">
+            <p>Formas de pagamento:</p>
+            <div class="pagamento-icones">
+              <img src="../css/assets/pix.png" alt="PIX">
+              <img src="../css/assets/credit-card.png" alt="Cartão">
+              <img src="../css/assets/boleto.png" alt="Boleto">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Função para carregar os detalhes do produto baseado no ID da URL
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const produtoId = urlParams.get('id');
+      
+      // Aqui você pode adicionar a lógica para carregar os dados do produto
+      // baseado no ID do produto
+    }
+  </script>
+</body>
+</html> 
