@@ -1,0 +1,86 @@
+{
+  "categorias": [
+    {
+      "titulo": "Contas Blox Fruits",
+      "imagem": "css/assets/cat-bloxfruits.jpg",
+      "link": "html/contas-blox-fruits.html",
+      "produtos": [
+        {"nome": "Conta Premium Blox Fruits", "imagem": "css/assets/prod-blox1.jpg", "preco": "R$ 49,90"},
+        {"nome": "Conta Básica Blox Fruits", "imagem": "css/assets/prod-blox2.jpg", "preco": "R$ 19,90"}
+      ]
+    },
+    {
+      "titulo": "Gamepass e Frutas Blox",
+      "imagem": "css/assets/cat-gamepass.jpg",
+      "link": "html/gamepass-frutas-blox.html",
+      "produtos": [
+        {"nome": "Gamepass VIP", "imagem": "css/assets/prod-gamepass1.jpg", "preco": "R$ 29,90"},
+        {"nome": "Fruta Lendária", "imagem": "css/assets/prod-gamepass2.jpg", "preco": "R$ 39,90"}
+      ]
+    },
+    {
+      "titulo": "Blue Lock Rivals",
+      "imagem": "css/assets/cat-bluelock.jpg",
+      "link": "html/blue-lock-rivals.html",
+      "produtos": [
+        {"nome": "Conta Blue Lock Pro", "imagem": "css/assets/prod-bluelock1.jpg", "preco": "R$ 59,90"}
+      ]
+    },
+    {
+      "titulo": "Contas Dead Rails",
+      "imagem": "css/assets/cat-deadrails.jpg",
+      "link": "html/contas-dead-rails.html",
+      "produtos": [
+        {"nome": "Conta Dead Rails", "imagem": "css/assets/prod-deadrails1.jpg", "preco": "R$ 24,90"}
+      ]
+    },
+    {
+      "titulo": "Crescer um Jardim",
+      "imagem": "css/assets/cat-jardim.jpg",
+      "link": "html/crescer-um-jardim.html",
+      "produtos": []
+    },
+    {
+      "titulo": "Toilet Tower Defense",
+      "imagem": "css/assets/cat-toilet.jpg",
+      "link": "html/toilet-tower-defense.html",
+      "produtos": []
+    },
+    {
+      "titulo": "Creatures of Sonaria",
+      "imagem": "css/assets/cat-sonaria.jpg",
+      "link": "html/creatures-of-sonaria.html",
+      "produtos": []
+    },
+    {
+      "titulo": "Fisch",
+      "imagem": "css/assets/cat-fisch.jpg",
+      "link": "html/fisch.html",
+      "produtos": []
+    },
+    {
+      "titulo": "Pet Simulator 99",
+      "imagem": "css/assets/cat-petsim.jpg",
+      "link": "html/pet-simulator-99.html",
+      "produtos": []
+    },
+    {
+      "titulo": "Bubble Gum Simulator",
+      "imagem": "css/assets/cat-bubblegum.jpg",
+      "link": "html/bubble-gum-simulator.html",
+      "produtos": []
+    },
+    {
+      "titulo": "BobEsponja Tower Defense",
+      "imagem": "css/assets/cat-bobesponja.jpg",
+      "link": "html/bobesponja-tower-defense.html",
+      "produtos": []
+    },
+    {
+      "titulo": "Brookhaven",
+      "imagem": "css/assets/cat-brookhaven.jpg",
+      "link": "html/brookhaven.html",
+      "produtos": []
+    }
+  ]
+} 

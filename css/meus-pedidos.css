@@ -1,0 +1,28 @@
+.page-content.improved {
+  max-width: 500px;
+  margin: 48px auto 0 auto;
+  background: #23242a;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #000a;
+  padding: 48px 32px 40px 32px;
+  text-align: center;
+}
+.page-title {
+  color: #00ff99;
+  font-size: 2.3rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-shadow: 2px 2px 8px #000;
+}
+.divider {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #00ff99 0%, #00d084 100%);
+  border-radius: 2px;
+  margin: 0 auto 28px auto;
+}
+.page-desc {
+  color: #eee;
+  font-size: 1.15rem;
+  margin-bottom: 32px;
+} 

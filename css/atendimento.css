@@ -1,0 +1,25 @@
+.contact-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+.contact-btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #0006;
+  transition: background 0.2s, transform 0.2s;
+  margin-bottom: 0;
+}
+.contact-btn.whatsapp { background: #25d366; }
+.contact-btn.discord { background: #5865F2; }
+.contact-btn.email { background: #00bcd4; }
+.contact-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+} 

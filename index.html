@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blox Brasil</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="banner">
+      <img src="css/assets/banner-temp.jpg" alt="Banner Blox Brasil">
+      <div class="logo">BLOX SHOP BRASIL</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="atendimento.html">Atendimento online</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="politica.html">Política de compra</a></li>
+          <li><a href="#" id="meus-pedidos">Meus pedidos</a></li>
+        </ul>
+      </nav>
+      <button class="btn-online">ESTAMOS ONLINE</button>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search" placeholder="O que você procura?">
+      <button id="btn-search">🔍</button>
+    </div>
+  </header>
+  <main>
+    <section class="categorias" id="categorias">
+      <div class="custom-cards-row">
+        <div class="custom-card">
+          <img src="css/assets/cat-bloxfruits.jpg" alt="Contas Blox Fruits" class="custom-card-bg">
+          <div class="custom-card-overlay">
+            <div class="custom-card-title">CONTAS BLOX FRUITS</div>
+            <a href="html/contas-blox-fruits.html" class="custom-card-btn">VER OFERTAS</a>
+          </div>
+        </div>
+        <div class="custom-card">
+          <img src="css/assets/cat-gamepass.jpg" alt="Gamepass e Frutas Blox" class="custom-card-bg">
+          <div class="custom-card-overlay">
+            <div class="custom-card-title">GAMEPASS E FRUTAS BLOX</div>
+            <a href="html/gamepass-frutas-blox.html" class="custom-card-btn">VER OFERTAS</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="produtos" id="produtos" style="display:none;">
+      <!-- Produtos da categoria selecionada aparecerão aqui -->
+    </section>
+  </main>
+  <div id="modal-pedidos" class="modal hidden">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Meus Pedidos</h2>
+      <div id="pedidos-lista"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html> 
