@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Compras - Blox Shop Brasil</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .compras-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #23242a;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px #000a;
+            color: #fff;
+            text-align: center;
+        }
+
+        .compras-container h2 {
+            color: #00ff99;
+            margin-bottom: 20px;
+        }
+
+        .compras-info {
+            margin-top: 20px;
+            padding: 20px;
+            background: #18191c;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #00ff99;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .recover-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #00ff99;
+            color: #18191c;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .recover-button:hover {
+             background: #00cc77;
+        }
+
+         main {
+            padding-top: 180px; /* Ajuste conforme a altura do seu header */
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="banner">
+      <img src="../css/assets/banner-temp.jpg" alt="Banner Blox Shop Brasil">
+      <div class="logo">BLOX SHOP BRASIL</div>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Início</a></li>
+          <li><a href="atendimento.html">Atendimento online</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="politica.html">Política de compra</a></li>
+          <li><a href="compras.html">Minhas Compras / Pedidos</a></li>
+        </ul>
+      </nav>
+      <button class="btn-online">ESTAMOS ONLINE</button>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search" placeholder="O que você procura?">
+      <button id="btn-search">🔍</button>
+    </div>
+  </header>
+  <main>
+    <div class="compras-container">
+
+        <h2>Minhas compras</h2>
+        
+        <div class="compras-info">
+            <p>ⓘ Não há compras registradas.</p>
+        </div>
+        
+        <div class="compras-info">
+            <p>Caso não esteja vendo suas compras, clique no botão abaixo para recuperá-las.</p>
+            <button class="recover-button">Recuperar compras</button>
+        </div>
+    </div>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html> 

@@ -17,17 +17,114 @@
           <li><a href="atendimento.html">Atendimento online</a></li>
           <li><a href="sobre.html">Sobre nós</a></li>
           <li><a href="politica.html">Política de compra</a></li>
-          <li><a href="meus-pedidos.html">Meus pedidos</a></li>
+          <li><a href="compras.html">Minhas Compras / Pedidos</a></li>
         </ul>
       </nav>
       <button class="btn-online">ESTAMOS ONLINE</button>
+      
+      <!-- Área do usuário -->
+      <div class="user-area">
+        <button id="userButton" class="user-button">
+          <i class="fas fa-user"></i>
+        </button>
+        <div id="userDropdown" class="user-dropdown hidden">
+          <div class="user-info">
+            <div class="user-avatar">
+              <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="user-details">
+              <span id="userName">Nome do Usuário</span>
+              <span id="userEmail">email@exemplo.com</span>
+            </div>
+          </div>
+          <div class="dropdown-divider"></div>
+          <ul class="dropdown-menu">
+            <li><a href="perfil.html">Meu Perfil</a></li>
+            <li><a href="#my-purchases">Minhas compras</a></li>
+            <li><a href="#" onclick="logout()">Sair</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </header>
   <main>
-    <section class="page-content">
+    <section class="page-content" id="meus-pedidos-content">
       <h1 class="page-title">Meus Pedidos</h1>
       <p>Você ainda não possui pedidos cadastrados.<br>Assim que realizar uma compra, seus pedidos aparecerão aqui!</p>
     </section>
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const userButton = document.getElementById('userButton');
+      const userDropdown = document.getElementById('userDropdown');
+      const logoutButton = document.querySelector('.dropdown-menu a[onclick="logout()"]');
+      const userName = document.getElementById('userName');
+      const userEmail = document.getElementById('userEmail');
+
+      const meusPedidosContent = document.getElementById('meus-pedidos-content');
+      const minhasComprasContent = document.getElementById('minhas-compras-content');
+
+      // Verifica se o usuário está logado
+      function checkUserLogin() {
+        const userData = localStorage.getItem('userData');
+        if (userData) {
+          const user = JSON.parse(userData);
+          userName.textContent = user.name || 'Usuário';
+          userEmail.textContent = user.email || '';
+          return true;
+        }
+        return false;
+      }
+
+      // Toggle do dropdown
+      userButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (!checkUserLogin()) {
+          // Redireciona para a página de login se não estiver logado
+          window.location.href = './login.html';
+          return;
+        }
+        userDropdown.classList.toggle('hidden');
+      });
+
+      // Fecha o dropdown quando clicar fora
+      document.addEventListener('click', function(e) {
+        if (!userDropdown.contains(e.target) && e.target !== userButton) {
+          userDropdown.classList.add('hidden');
+        }
+      });
+
+      // Função de logout
+      window.logout = function() {
+        localStorage.removeItem('userData');
+        // Redireciona para a página inicial após o logout
+        window.location.href = '../index.html';
+      };
+
+      // Adicionar evento de clique para o link de Meu Perfil no dropdown
+      document.querySelector('.dropdown-menu a[href="perfil.html"]').addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.href = './perfil.html';
+      });
+
+      // Adicionar evento de clique para o link de Minhas compras no dropdown
+      document.querySelector('.dropdown-menu a[href="#my-purchases"]').addEventListener('click', function(e) {
+          e.preventDefault();
+          userDropdown.classList.add('hidden'); // Fechar dropdown
+          alert('Funcionalidade de Minhas compras ainda não implementada aqui.');
+      });
+
+      // Adicionar evento de clique para o link de Meus Pedidos no menu principal (na navegação)
+      document.querySelector('header nav ul li a[href="meus-pedidos.html"]').addEventListener('click', function(e) {
+          // Não impede o default, pois o link já leva para esta página
+          // Garante que a seção Meus Pedidos seja exibida por padrão ao acessar a página pelo menu principal
+          meusPedidosContent.style.display = 'block';
+          minhasComprasContent.style.display = 'none';
+      });
+
+      // Verifica o login ao carregar a página
+      checkUserLogin();
+    });
+  </script>
 </body>
 </html> 

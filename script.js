@@ -28,6 +28,74 @@ document.addEventListener('DOMContentLoaded', () => {
   modal.querySelector('.close').onclick = () => {
     modal.classList.add('hidden');
   };
+
+  // Funções para a área do usuário (serão movidas para meus-pedidos.html)
+  // const userButton = document.getElementById('userButton');
+  // const userDropdown = document.getElementById('userDropdown');
+  // const logoutButton = document.getElementById('logoutButton');
+  // const userName = document.getElementById('userName');
+  // const userEmail = document.getElementById('userEmail');
+
+  // // Verifica se o usuário está logado
+  // function checkUserLogin() {
+  //   const userData = localStorage.getItem('userData');
+  //   if (userData) {
+  //     const user = JSON.parse(userData);
+  //     userName.textContent = user.name || 'Usuário';
+  //     userEmail.textContent = user.email || '';
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
+  // // Toggle do dropdown
+  // userButton.addEventListener('click', function(e) {
+  //   e.stopPropagation();
+  //   if (!checkUserLogin()) {
+  //     window.location.href = './html/login.html';
+  //     return;
+  //   }
+  //   userDropdown.classList.toggle('hidden');
+  // });
+
+  // // Fecha o dropdown quando clicar fora
+  // document.addEventListener('click', function(e) {
+  //   if (!userDropdown.contains(e.target) && e.target !== userButton) {
+  //     userDropdown.classList.add('hidden');
+  //   }
+  // });
+
+  // // Função de logout
+  // logoutButton.addEventListener('click', function(e) {
+  //   e.preventDefault();
+  //   localStorage.removeItem('userData');
+  //   window.location.href = 'index.html';
+  // });
+
+  // // Adicionar evento de clique para o link de perfil (agora Minhas compras)
+  // document.querySelector('.dropdown-menu a[href="#my-purchases"]').addEventListener('click', function(e) {
+  //   e.preventDefault();
+  //   document.getElementById('categorias').style.display = 'none';
+  //   document.getElementById('produtos').style.display = 'none';
+  //   document.getElementById('my-purchases').style.display = 'block'; // Garante que a seção Minhas compras seja exibida
+  //   userDropdown.classList.add('hidden'); // Fechar dropdown
+  // });
+
+  // // Adicionar evento de clique para o link de Meus Pedidos no dropdown
+  // document.querySelector('.dropdown-menu a[href="#orders"]').addEventListener('click', function(e) {
+  //   e.preventDefault();
+  //   // Aqui você pode adicionar a lógica para exibir a seção de pedidos, se houver
+  //   // Por enquanto, apenas fechar o dropdown e mostrar uma mensagem ou a seção de pedidos existente
+  //   userDropdown.classList.add('hidden'); // Fechar dropdown
+  //   // Exemplo: mostrar a seção de pedidos existente (seção #produtos ou outra) ou um modal
+  //   // document.getElementById('produtos').style.display = 'block'; 
+  //   // document.getElementById('categorias').style.display = 'none';
+  //   // document.getElementById('my-purchases').style.display = 'none';
+  //   alert('Funcionalidade de Meus Pedidos ainda não implementada.');
+  // });
+
+  // Verifica o login ao carregar a página
+  // checkUserLogin();
 });
 
 function renderCategorias(categorias) {
@@ -63,6 +131,7 @@ function mostrarProdutos(categoria) {
   const secaoCategorias = document.getElementById('categorias');
   secaoCategorias.style.display = 'none';
   secaoProdutos.style.display = 'flex';
+  document.getElementById('my-purchases').style.display = 'none'; // Oculta Minhas compras ao mostrar produtos
   secaoProdutos.innerHTML = `
     <button class="btn-voltar" style="margin-bottom:20px">&larr; Voltar</button>
     <h2 style="width:100%;text-align:center;color:#00ff66;">${categoria.titulo}</h2>
@@ -100,5 +169,6 @@ function mostrarProdutos(categoria) {
   secaoProdutos.querySelector('.btn-voltar').onclick = () => {
     secaoProdutos.style.display = 'none';
     secaoCategorias.style.display = 'flex';
+    document.getElementById('my-purchases').style.display = 'none'; // Oculta Minhas compras ao voltar para categorias
   };
 } 

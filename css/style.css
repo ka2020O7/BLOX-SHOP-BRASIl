@@ -266,7 +266,7 @@ header nav ul li a:hover {
   display: flex;
   gap: 32px;
   justify-content: flex-start;
-  margin: 32px 0;
+  margin: 15px 0;
 }
 .custom-card {
   position: relative;
@@ -526,4 +526,139 @@ header nav ul li a:hover {
 .btn-details:hover {
   background-color: #2a2b32;
   transform: translateY(-2px);
+}
+
+/* Área do usuário */
+.user-area {
+  position: relative;
+  margin-left: auto;
+  padding-right: 20px;
+}
+
+.user-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.user-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  z-index: 1000;
+  margin-top: 8px;
+}
+
+.user-dropdown.hidden {
+  display: none;
+}
+
+.user-info {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  background: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #4b5563;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-details span:first-child {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.user-details span:last-child {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 8px 0;
+}
+
+.dropdown-menu {
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+}
+
+.dropdown-menu li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  color: #4b5563;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdown-menu li a i {
+  width: 20px;
+  color: #6b7280;
+}
+
+/* Estilos para centralizar o conteúdo e padding do main em páginas de conteúdo */
+.page-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #23242a;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px #000a;
+    color: #fff;
+    text-align: center; /* Centraliza o texto */
+}
+
+.page-content h1 {
+    color: #00ff99;
+    margin-bottom: 20px;
+}
+
+.page-content p, .page-content ul {
+    text-align: left; /* Alinha o texto dos parágrafos e listas à esquerda, mantendo o container centralizado */
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.page-content ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+main {
+    padding-top: 180px; /* Ajuste conforme a altura do seu header com a search bar */
 } 
