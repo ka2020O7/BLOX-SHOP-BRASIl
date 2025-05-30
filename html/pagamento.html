@@ -6,6 +6,17 @@
   <title>Pagamento - Blox Shop Brasil</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/pagamento.css">
+  <script src="../payment/gateway.js"></script>
+  <script>
+    // Inicializa o gateway de pagamento
+    window.onload = function() {
+      if (window.paymentConfig) {
+        paymentConfig.init();
+      } else {
+        console.error('Gateway não encontrado!');
+      }
+    };
+  </script>
 </head>
 <body>
   <header>
@@ -117,7 +128,7 @@
     });
 
     // Função para carregar informações do produto
-    window.onload = function() {
+    function loadProductInfo() {
       const urlParams = new URLSearchParams(window.location.search);
       const produtoId = urlParams.get('id');
       const preco = urlParams.get('preco');
@@ -130,7 +141,21 @@
         `;
         document.getElementById('total-valor').textContent = `R$ ${preco}`;
       }
-    };
+    }
+
+    // Inicializa tudo quando a página carregar
+    window.addEventListener('DOMContentLoaded', function() {
+      // Inicializa o gateway
+      if (window.paymentConfig) {
+        console.log('Inicializando gateway...');
+        paymentConfig.init();
+      } else {
+        console.error('Gateway não encontrado!');
+      }
+
+      // Carrega informações do produto
+      loadProductInfo();
+    });
 
     // Manipulador do formulário de login
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
@@ -204,11 +229,13 @@
     document.getElementById('paymentForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const formaPagamento = document.querySelector('input[name="payment"]:checked').value;
-      
-      // Aqui você implementaria a lógica de pagamento
-      alert('Pedido realizado com sucesso!');
-      window.location.href = 'meus-pedidos.html';
+      const urlParams = new URLSearchParams(window.location.search);
+      const produtoId = urlParams.get('id');
+      const preco = urlParams.get('preco');
+
+      // Usando o sistema de gateway com tentativas
+      paymentConfig.redirectToGateway(produtoId, preco);
     });
   </script>
 </body>
-</html> 
+</html>

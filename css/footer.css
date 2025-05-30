@@ -1,0 +1,154 @@
+/* Basic footer styling */
+footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-top {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.footer-top h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Reviews carousel styling */
+.reviews-carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding: 20px 40px; /* Space for navigation buttons */
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 2;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-nav:hover {
+    background: #45a049;
+}
+
+.carousel-nav.prev {
+    left: 0;
+}
+
+.carousel-nav.next {
+    right: 0;
+}
+
+.review-item {
+    flex: 0 0 auto;
+    width: 300px; /* Adjust as needed */
+    margin-right: 20px;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+.review-item i {
+    color: #4CAF50; /* Green thumbs-up color */
+    margin-bottom: 10px;
+}
+
+.review-item p {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.review-item .author {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* Footer bottom section */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-logo,
+.footer-links {
+    width: 23%; /* Adjust as needed for responsiveness */
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    max-width: 150px;
+    margin-bottom: 15px;
+}
+
+.footer-links h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #4CAF50; /* Green color for headings */
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.footer-links ul li a:hover {
+    color: #fff;
+}
+
+.footer-links ul li a i {
+    margin-right: 8px;
+    font-size: 1.1em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo,
+    .footer-links {
+        width: 80%;
+        text-align: center;
+    }
+} 
