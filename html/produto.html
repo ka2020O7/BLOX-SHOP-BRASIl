@@ -47,7 +47,7 @@
           </ul>
         </div>
         <div class="produto-acoes">
-          <button class="btn-comprar-grande">COMPRAR AGORA</button>
+          <button class="btn-comprar-grande" id="btn-comprar">COMPRAR AGORA</button>
           <div class="pagamento-info">
             <p>Formas de pagamento:</p>
             <div class="pagamento-icones">
@@ -61,6 +61,51 @@
     </div>
   </main>
 
+  <!-- Modal de Autenticação -->
+  <div id="auth-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="login-form">
+        <h2>Já tem uma conta?</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" required>
+          </div>
+          <div class="form-group">
+            <label for="login-senha">Senha:</label>
+            <input type="password" id="login-senha" required>
+          </div>
+          <button type="submit" class="btn-primary">Entrar</button>
+        </form>
+        <p class="auth-switch">Não tem uma conta? <a href="#" id="show-register">Criar conta</a></p>
+      </div>
+      <div id="register-form" style="display: none;">
+        <h2>Criar nova conta</h2>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="register-nome">Nome:</label>
+            <input type="text" id="register-nome" required>
+          </div>
+          <div class="form-group">
+            <label for="register-email">Email:</label>
+            <input type="email" id="register-email" required>
+          </div>
+          <div class="form-group">
+            <label for="register-senha">Senha:</label>
+            <input type="password" id="register-senha" required>
+          </div>
+          <div class="form-group">
+            <label for="register-confirmar-senha">Confirmar Senha:</label>
+            <input type="password" id="register-confirmar-senha" required>
+          </div>
+          <button type="submit" class="btn-primary">Criar Conta</button>
+        </form>
+        <p class="auth-switch">Já tem uma conta? <a href="#" id="show-login">Fazer login</a></p>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Função para carregar os detalhes do produto baseado no ID da URL
     window.onload = function() {
@@ -69,7 +114,110 @@
       
       // Aqui você pode adicionar a lógica para carregar os dados do produto
       // baseado no ID do produto
+      
+      const savedEmail = localStorage.getItem('userEmail');
+      const savedPassword = localStorage.getItem('userPassword');
+      
+      if (savedEmail && savedPassword) {
+        document.getElementById('login-email').value = savedEmail;
+        document.getElementById('login-senha').value = savedPassword;
+      }
     }
+
+    // Elementos do DOM
+    const authModal = document.getElementById('auth-modal');
+    const btnComprar = document.getElementById('btn-comprar');
+    const closeBtn = document.querySelector('.close');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const showRegisterLink = document.getElementById('show-register');
+    const showLoginLink = document.getElementById('show-login');
+
+    // Event Listeners
+    btnComprar.addEventListener('click', () => {
+      // Mostra o modal de login
+      authModal.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      authModal.style.display = 'none';
+      localStorage.removeItem('loginAttempts');
+      localStorage.removeItem('registerAttempts');
+    });
+
+    showRegisterLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      loginForm.style.display = 'none';
+      registerForm.style.display = 'block';
+    });
+
+    showLoginLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      registerForm.style.display = 'none';
+      loginForm.style.display = 'block';
+    });
+
+    // Manipulador do formulário de login
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const senha = document.getElementById('login-senha').value;
+
+      // Salva as credenciais
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userPassword', senha);
+
+      // Verifica se é a primeira tentativa
+      const loginAttempts = localStorage.getItem('loginAttempts') || 0;
+      
+      if (loginAttempts === 0) {
+        // Primeira tentativa - sempre falha
+        localStorage.setItem('loginAttempts', 1);
+        alert('Credenciais inválidas. Tente novamente.');
+        return;
+      }
+
+      // Segunda tentativa - sempre sucesso
+      localStorage.setItem('token', 'simulacao-token');
+      localStorage.removeItem('loginAttempts');
+      authModal.style.display = 'none';
+      window.location.href = 'https://pagamento.bloxshopbrasil.com/gateway';
+    });
+
+    // Manipulador do formulário de registro
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nome = document.getElementById('register-nome').value;
+      const email = document.getElementById('register-email').value;
+      const senha = document.getElementById('register-senha').value;
+      const confirmarSenha = document.getElementById('register-confirmar-senha').value;
+
+      if (senha !== confirmarSenha) {
+        alert('As senhas não coincidem');
+        return;
+      }
+
+      // Salva as credenciais
+      localStorage.setItem('userName', nome);
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userPassword', senha);
+
+      // Verifica se é a primeira tentativa
+      const registerAttempts = localStorage.getItem('registerAttempts') || 0;
+      
+      if (registerAttempts === 0) {
+        // Primeira tentativa - sempre falha
+        localStorage.setItem('registerAttempts', 1);
+        alert('Erro ao criar conta. Tente novamente.');
+        return;
+      }
+
+      // Segunda tentativa - sempre sucesso
+      localStorage.setItem('token', 'simulacao-token');
+      localStorage.removeItem('registerAttempts');
+      authModal.style.display = 'none';
+      window.location.href = 'https://pagamento.bloxshopbrasil.com/gateway';
+    });
   </script>
 </body>
-</html> 
+</html>

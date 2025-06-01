@@ -24,17 +24,16 @@ footer {
 
 /* Reviews carousel styling */
 .reviews-carousel {
-    display: flex;
-    overflow: hidden;
-    width: 100%;
     position: relative;
-    padding: 20px 40px; /* Space for navigation buttons */
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 40px;
 }
 
 .carousel-container {
     display: flex;
-    transition: transform 0.5s ease;
-    width: 100%;
+    gap: 20px;
+    animation: scroll 30s linear infinite;
 }
 
 .carousel-nav {
@@ -64,14 +63,25 @@ footer {
 }
 
 .review-item {
-    flex: 0 0 auto;
-    width: 300px; /* Adjust as needed */
-    margin-right: 20px;
+    flex: 0 0 300px;
     background-color: #333;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     text-align: left;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-320px * 6));
+    }
+}
+
+.reviews-carousel:hover .carousel-container {
+    animation-play-state: paused;
 }
 
 .review-item i {

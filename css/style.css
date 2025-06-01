@@ -99,7 +99,7 @@ header nav ul li a:hover {
   flex-wrap: wrap;
   gap: 24px;
   justify-content: center;
-  margin: 30px 0;
+  margin: 60px 0 280px 0;
 }
 .card-categoria {
   background: #23242a;
@@ -660,5 +660,5 @@ header nav ul li a:hover {
 }
 
 main {
-    padding-top: 180px; /* Ajuste conforme a altura do seu header com a search bar */
+    padding-top: 50px; /* Reduzido ao mínimo para maximizar espaço */
 } 

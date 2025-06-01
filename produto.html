@@ -127,14 +127,8 @@
 
     // Event Listeners
     btnComprar.addEventListener('click', () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        // Se já estiver autenticado, redireciona para o pagamento
-        window.location.href = `html/pagamento.html?id=${new URLSearchParams(window.location.search).get('id')}`;
-      } else {
-        // Se não estiver autenticado, mostra o modal de autenticação
-        authModal.style.display = 'flex';
-      }
+      // Mostra o modal de login
+      authModal.style.display = 'flex';
     });
 
     closeBtn.addEventListener('click', () => {
@@ -179,7 +173,7 @@
       localStorage.setItem('token', 'simulacao-token');
       localStorage.removeItem('loginAttempts');
       authModal.style.display = 'none';
-      window.location.href = `html/pagamento.html?id=${new URLSearchParams(window.location.search).get('id')}`;
+      window.location.href = 'https://pagamento.bloxshopbrasil.com/gateway';
     });
 
     // Manipulador do formulário de registro
@@ -214,7 +208,7 @@
       localStorage.setItem('token', 'simulacao-token');
       localStorage.removeItem('registerAttempts');
       authModal.style.display = 'none';
-      window.location.href = `html/pagamento.html?id=${new URLSearchParams(window.location.search).get('id')}`;
+      window.location.href = 'https://pagamento.bloxshopbrasil.com/gateway';
     });
 
     // Preenche automaticamente o email e senha no login se existirem
