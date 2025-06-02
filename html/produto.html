@@ -10,7 +10,7 @@
 <body>
   <header>
     <div class="banner">
-      <img src="../css/assets/banner-temp.jpg" alt="Banner Blox Brasil">
+      <img src="../css/assets/banner-temp.jpg" alt="Banner Blox Shop Brasil">
       <div class="logo">BLOX BRASIL</div>
       <nav>
         <ul>
@@ -31,14 +31,14 @@
         <img src="../css/assets/produto1.jpg" alt="Produto" id="produto-img">
       </div>
       <div class="produto-info-detalhada">
-        <h1 id="produto-titulo">LEVEL 2650 + FRUTA GRAVITY</h1>
+        <h1 id="produto-titulo"></h1>
         <div class="precos">
-          <span class="preco-atual" id="preco-atual">R$ 19,90</span>
-          <span class="preco-antigo" id="preco-antigo">R$ 21,99</span>
+          <span class="preco-atual" id="preco-atual"></span>
+          <span class="preco-antigo" id="preco-antigo"></span>
         </div>
         <div class="produto-descricao">
           <h2>Descrição do Produto</h2>
-          <p id="produto-descricao-texto">Conta de Blox Fruit: Level Aleatório + Fruta Gravity no Inventário</p>
+          <p id="produto-descricao-texto"></p>
           <ul class="produto-caracteristicas">
             <li>✅ Level garantido</li>
             <li>✅ Fruta no inventário</li>
@@ -106,21 +106,28 @@
     </div>
   </div>
 
+  <script src="../js/produtos.js"></script>
   <script>
     // Função para carregar os detalhes do produto baseado no ID da URL
     window.onload = function() {
+      console.log('Carregando produto...');
       const urlParams = new URLSearchParams(window.location.search);
       const produtoId = urlParams.get('id');
+      console.log('ID do produto:', produtoId);
       
-      // Aqui você pode adicionar a lógica para carregar os dados do produto
-      // baseado no ID do produto
-      
-      const savedEmail = localStorage.getItem('userEmail');
-      const savedPassword = localStorage.getItem('userPassword');
-      
-      if (savedEmail && savedPassword) {
-        document.getElementById('login-email').value = savedEmail;
-        document.getElementById('login-senha').value = savedPassword;
+      if (produtoId && produtos[produtoId]) {
+        const produto = produtos[produtoId];
+        console.log('Dados do produto:', produto);
+        
+        // Atualiza o título da página
+        document.title = `${produto.titulo} - Blox Brasil`;
+        
+        // Atualiza os elementos da página com os detalhes do produto
+        document.getElementById('produto-img').src = produto.imagem;
+        document.getElementById('produto-titulo').textContent = produto.titulo;
+        document.getElementById('preco-atual').textContent = `R$ ${produto.preco}`;
+        document.getElementById('preco-antigo').textContent = `R$ ${produto.precoAntigo}`;
+        document.getElementById('produto-descricao-texto').textContent = produto.descricao;
       }
     }
 
